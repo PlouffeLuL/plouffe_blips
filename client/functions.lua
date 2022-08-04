@@ -1,4 +1,5 @@
-local Utils = exports.plouffe_lib:Get("Utils")
+
+local Utils
 local blips = {
     garages = {
         style = {
@@ -318,8 +319,26 @@ local blips = {
 local active = json.decode(GetResourceKvpString("actives")) or {}
 local Ui = {}
 
+if GetResourceState("plouffe_lib") ~= "missing" then
+    CreateThread(function ()
+        local breakCount = 0
+        while GetResourceState("plouffe_lib") ~= "started" and breakCount < 30 do
+            Wait(1000)
+            breakCount += 1
+        end
+
+        if GetResourceState("plouffe_lib") ~= "started" then
+            return
+        end
+
+        Utils = exports.plouffe_lib:Get("Utils")
+    end)
+end
+
 function Ui.Close(data)
-    Utils:StopAnim()
+    if Utils then
+        Utils:StopAnim()
+    end
 
     SetNuiFocus(false, false)
 
@@ -345,16 +364,19 @@ end
 RegisterNUICallback("close", Ui.Close)
 
 function Ui.Open()
-    Utils:PlayAnim(-1,'amb@world_human_seat_wall_tablet@female@base','base',49,2.0,2.0,-1,true,true,false,{
-        model = 'bkr_prop_fakeid_tablet_01a',
-        bone = 28422,
-        off1 = 0.06,
-        off2 = 0.01,
-        off3 = 0.05,
-        rot1 = 90.0,
-        rot2 = 90.0,
-        rot3 = 0.0,
-    })
+    if Utils then
+        Utils:PlayAnim(-1,'amb@world_human_seat_wall_tablet@female@base','base',49,2.0,2.0,-1,true,true,false,{
+            model = 'bkr_prop_fakeid_tablet_01a',
+            bone = 28422,
+            off1 = 0.06,
+            off2 = 0.01,
+            off3 = 0.05,
+            rot1 = 90.0,
+            rot2 = 90.0,
+            rot3 = 0.0,
+        })
+    end
+
     local data = {}
 
     for k,v in pairs(blips) do

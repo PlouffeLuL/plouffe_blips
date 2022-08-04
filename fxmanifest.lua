@@ -2,7 +2,7 @@ fx_version "adamant"
 
 games { 'gta5'}
 lua54 'yes'
-use_fxv2_oal 'yes'
+use_experimental_fxv2_oal 'yes'
 
 ui_page {
     'html/index.html',
@@ -16,8 +16,4 @@ files {
 
 client_scripts {
     'client/*.lua'
-}
-
-dependencies {
-    "plouffe_lib"
 }
