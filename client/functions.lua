@@ -337,7 +337,7 @@ end
 
 function Ui.Close(data)
     if Utils then
-        Utils:StopAnim()
+        Utils.StopAnim()
     end
 
     SetNuiFocus(false, false)
@@ -365,7 +365,7 @@ RegisterNUICallback("close", Ui.Close)
 
 function Ui.Open()
     if Utils then
-        Utils:PlayAnim(-1,'amb@world_human_seat_wall_tablet@female@base','base',49,2.0,2.0,-1,true,true,false,{
+        Utils.PlayAnim(-1,'amb@world_human_seat_wall_tablet@female@base','base',49,2.0,2.0,-1,true,true,false,{
             model = 'bkr_prop_fakeid_tablet_01a',
             bone = 28422,
             off1 = 0.06,
