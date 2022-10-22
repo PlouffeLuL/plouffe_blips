@@ -1,5 +1,7 @@
-# Plouffe_blips
+# Plouffe_blips (No support will be given for this script)
 
-# **[Discord](https://discord.gg/xJVCY9AvvW)**
+[Docs](https://plouffelul.github.io/) 
 
-# **[Tebex](https://plouffe.tebex.io)**
+[Discord](https://discord.gg/xJVCY9AvvW) 
+
+[Tebex](https://plouffe.tebex.io)
